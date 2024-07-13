@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.container {
+    text-align: center;
+}
+
+.symbol {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.message {
+    font-size: 2rem;
+    color: #343a40;
+    margin-top: 1rem;
+}

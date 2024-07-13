@@ -1,0 +1,29 @@
+<div class="container1">
+  <div class="header">
+    <p>{{data.roleName}}</p>
+  </div>
+  <div class="img-box">
+    <img src="assets/imges/img1.jpg" id="img-box" alt="user"/>
+  </div>
+  <div class="main-body">
+    <div class="row1">
+      <div class="col1"> <span>Role:</span>
+        <span class="role-content">{{data.role}}</span>
+        </div>
+      <div class="col1"> <span>RoleName:</span>
+        <span class="role-content">{{data.roleName}}</span></div>
+    </div>
+    <div class="row1">
+      <div class="col1" *ngIf="data.tenantId != null">
+        <span>Client Name:</span>
+        <span class="role-content">{{data.tenantId}}</span>
+
+      </div>
+      <div class="col1">
+        <span>LoginId:</span>
+       <span class="role-content">{{data.loginId}}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

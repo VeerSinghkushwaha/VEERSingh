@@ -1,0 +1,301 @@
+<div class="deve-container">
+
+  <div class="deve-dash">
+
+    <div class="btn2">
+
+      <button mat-raised-button class="btn1-top btn1" style="background-color: #2196f3">
+        <span class="btn1-int">Total:</span>
+        <span class="btn1-int"> {{ticketTable.length}}</span>
+
+      </button>
+    </div>
+
+    <div class="btn2">
+      <button style="background-color: #04aa6d" class="btn1" mat-raised-button>Primary</button>
+    </div>
+
+    <div class="btn2">
+      <button style="background-color: #55c2da" class="btn1" mat-raised-button id="">Accent</button>
+    </div>
+
+    <div class="btn2">
+      <button style="background-color: rgb(54, 110, 161)" class="btn1" mat-raised-button
+        (click)="openProblem()">Message</button>
+    </div>
+
+
+  </div>
+
+
+  <div class="deve-filter-box">
+
+    <div class="c">
+      <button mat-raised-button id="deve-pro-tick">
+        Problem Ticket
+      </button>
+    </div>
+
+    <div class="search-filter">
+      <form>
+        <input (keyup)="applyFilter($event)" placeholder="Search" #input id="search-filter">
+      </form>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+<table mat-table [dataSource]="dataSource">
+  <!-- ticket number Column -->
+
+  <ng-container matColumnDef="tkt_No">
+    <th style="max-width:3rem;margin-right:20px" mat-header-cell *matHeaderCellDef class="tablehead">
+
+      <button mat-button [matMenuTriggerFor]="menu" (click)="openMenu($event,'tkt_No')">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+
+        Tick</button>
+      <mat-menu #menu="matMenu">
+
+        <div  (click)="menuItemClicked('tkt_No');$event.stopPropagation()">
+
+          <form>
+            <label>Search</label>
+            <input  type="search" class="form-field" (keyup)="filterColumn('tkt_No',$event)">
+          </form>
+        </div>
+        <button  mat-menu-item (menuClosed)="menuClosed()">Close</button>
+        <!-- <button mat-menu-item (click)="menuItemClicked('Option 2')">Option 2</button>
+       -->
+      </mat-menu>
+    </th>
+    <td style="max-width:3rem;margin:0px;" class="tabledata shrink-text" mat-cell *matCellDef="let element">
+      {{element.tkt_No}}</td>
+  </ng-container>
+
+  <!-- ticket Date Column -->
+  <ng-container matColumnDef="tkt_Date">
+    <th style="max-width:5rem;" mat-header-cell *matHeaderCellDef class="tablehead" matTooltip="Ticket date">
+      <button mat-button [matMenuTriggerFor]="menu1" (click)="openMenu($event,'tkt_Date')">
+        <i class="fa-solid fa-filter" aria-hidden="true"></i>
+
+        Date</button>
+      <mat-menu #menu1="matMenu">
+
+        <div
+        (click)="menuItemClicked('tkt_Date');$event.stopPropagation()">
+
+          <form>
+            <label>Search</label>
+            <input type="search" class="form-field" (keyup)="filterColumn('tkt_Date',$event)">
+          </form>
+
+        </div>
+        <button mat-menu-item (menuClosed)="menuClosed()">Close111</button>
+        <!-- <button mat-menu-item (click)="menuItemClicked('Option 2')">Option 2</button> -->
+
+       </mat-menu>
+       </th>
+    <td class="shrink-text" style="max-width:5rem;" mat-cell *matCellDef="let element">{{element.tkt_Date | slice:0:10}}
+    </td>
+  </ng-container>
+
+  <!-- Allotted Column -->
+  <ng-container matColumnDef="tkt_ReleaseId">
+    <th style="max-width:5rem;" mat-header-cell *matHeaderCellDef class="tablehead">
+      <button mat-button [matMenuTriggerFor]="menu" (click)="openMenu($event,'tkt_ReleaseId')">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+
+        Alloted</button>
+      <mat-menu #menu="matMenu">
+
+        <div
+         (click)="menuItemClicked('tkt_ReleaseId');$event.stopPropagation()">
+
+          <form>
+            <label>Search</label>
+            <input type="search" class="form-field" (keyup)="filterColumn('tkt_ReleaseId',$event)">
+          </form>
+        </div>
+        <button mat-menu-item (menuClosed)="menuClosed()">Close</button>
+        <!-- <button mat-menu-item (click)="menuItemClicked('Option 2')">Option 2</button> -->
+
+      </mat-menu>
+    </th>
+    <td class="shrink-text" style="max-width:5rem;" mat-cell *matCellDef="let element">{{element.tkt_ReleaseId}}</td>
+  </ng-container>
+
+  <!-- tenantName Column -->
+  <ng-container matColumnDef="tkt_TenantId">
+    <th style="max-width:5rem;" mat-header-cell *matHeaderCellDef class="tablehead">
+
+      <button mat-button [matMenuTriggerFor]="menu" (click)="openMenu($event,'tkt_TenantId')">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+
+        Client</button>
+      <mat-menu #menu="matMenu">
+
+        <div
+        (click)="menuItemClicked('tkt_TenantId');$event.stopPropagation()">
+
+          <form>
+            <label>Search</label>
+            <input type="search" class="form-field" (keyup)="filterColumn('tkt_TenantId',$event)">
+          </form>
+        </div>
+        <button mat-menu-item (menuClosed)="menuClosed()">Close</button>
+        <!-- <button mat-menu-item (click)="menuItemClicked('Option 2')">Option 2</button> -->
+      </mat-menu>
+    </th>
+    <td class="shrink-text" style="max-width:5rem;" mat-cell *matCellDef="let element">{{element.tkt_TenantId |
+      slice:0:16}}</td>
+  </ng-container>
+
+  <!-- problems Column -->
+  <ng-container matColumnDef="tkt_Problem">
+    <th style="max-width:5rem;" mat-header-cell *matHeaderCellDef class="tablehead">
+
+      <button mat-button [matMenuTriggerFor]="menu" (click)="openMenu($event,'tkt_Problem')">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+
+        Problem</button>
+      <mat-menu #menu="matMenu">
+
+        <div  (click)="menuItemClicked('tkt_Problem');$event.stopPropagation()">
+
+          <form>
+            <label>Search</label>
+            <input type="search" class="form-field" (keyup)="filterColumn('tkt_Problem',$event)">
+          </form>
+        </div>
+        <button mat-menu-item (menuClosed)="menuClosed()">Close</button>
+        <!-- <button mat-menu-item (click)="menuItemClicked('Option 2')">Option 2</button> -->
+
+      </mat-menu>
+    </th>
+    <td class="shrink-text" style="max-width:5rem;" mat-cell *matCellDef="let element">{{element.tkt_Problem }}</td>
+  </ng-container>
+
+  <!--description Column -->
+  <ng-container matColumnDef="tkt_Desc">
+    <th style="max-width:5rem;" mat-header-cell *matHeaderCellDef class="tablehead">
+
+      <button mat-button [matMenuTriggerFor]="menu" (click)="openMenu($event,'tkt_Desc')">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+
+        Descri.  </button>
+      <mat-menu #menu="matMenu">
+
+        <div  (click)="menuItemClicked('tkt_Desc');$event.stopPropagation()">
+
+          <form>
+            <label>Search</label>
+            <input type="search" class="form-field" (keyup)="filterColumn('tkt_Desc',$event)">
+          </form>
+        </div>
+        <button mat-menu-item (menuClosed)="menuClosed()">Close</button>
+        <!-- <button mat-menu-item (click)="menuItemClicked('Option 2')">Option 2</button> -->
+
+      </mat-menu>
+    </th>
+    <td class="shrink-text" style="max-width:5rem;" mat-cell *matCellDef="let element"
+      (click)="openDesc(element.tkt_Desc)" matTooltip="{{element.tkt_Desc}}">{{element.tkt_Desc }}...</td>
+  </ng-container>
+
+  <!--Resolution Column -->
+  <!-- <ng-container matColumnDef="tkt_ResolutionId">
+       <th style="max-width:5rem;" mat-header-cell *matHeaderCellDef class="tablehead">Resolution
+        <div>
+          <form>
+      <input  class="form-field" (keyup)="filterColumn('tkt_ResolutionId',$event)" placeholder="search" >
+    </form>
+          </div>
+       </th>
+       <td style="max-width:5rem;" mat-cell *matCellDef="let element">{{element.tkt_ResolutionId}}</td>
+     </ng-container> -->
+
+  <!-- status Column -->
+  <ng-container matColumnDef="tkt_Status">
+    <th style="max-width:5rem;" mat-header-cell *matHeaderCellDef class="tablehead">
+
+
+      <button mat-button [matMenuTriggerFor]="menu" (click)="openMenu($event,'tkt_Status')">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+
+        Status</button>
+      <mat-menu #menu="matMenu">
+
+        <div  (click)="menuItemClicked('tkt_Status');$event.stopPropagation()">
+
+          <form >
+            <label>Search</label>
+            <input type="search" class="form-field" (keyup)="filterColumn('tkt_Status',$event)">
+          </form>
+        </div>
+        <button mat-menu-item (menuClosed)="menuClosed()">Close</button>
+        <!-- <button mat-menu-item (click)="menuItemClicked('Option 2')">Option 2</button> -->
+
+      </mat-menu>
+    <td class="shrink-text" style="max-width:5rem;" mat-cell *matCellDef="let element">{{element.tkt_Status}}</td>
+  </ng-container>
+
+  <!-- ETS and Age Column -->
+  <ng-container matColumnDef="tkt_Priority">
+    <th style="max-width:5rem;" mat-header-cell *matHeaderCellDef class="tablehead">
+
+      <button mat-button [matMenuTriggerFor]="menu" (click)="openMenu($event,'tkt_Priority')">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+
+        ETS/Age/prio </button>
+      <mat-menu #menu="matMenu">
+
+        <div  (click)="menuItemClicked('tkt_Priority');$event.stopPropagation()">
+
+          <form style="display:flex">
+            <label>Search</label>
+            <input type="search" class="form-field" (keyup)="filterColumn('tkt_Priority',$event)">
+          </form>
+        </div>
+        <button mat-menu-item (menuClosed)="menuClosed()">Close</button>
+        <!-- <button mat-menu-item (click)="menuItemClicked('Option 2')">Option 2</button>
+       -->
+      </mat-menu>
+    </th>
+    <td class="shrink-text" style="max-width:5rem;" mat-cell *matCellDef="let element">{{element.tkt_Priority}}</td>
+  </ng-container>
+
+
+  <!-- Action Column -->
+  <ng-container matColumnDef="action">
+    <th style="max-width:200px !important;text-align: center;" mat-header-cell *matHeaderCellDef class="tablehead">Action</th>
+    <td class="shrink-text" style="max-width:200px !important" mat-cell *matCellDef="let element">{{element.action}}
+      <button matTooltip="Remarks" class="btn-rep" (click)="openRemark(element.tkt_FormId)">
+        <i class="fa fa-comment"></i>
+      </button>
+      <button matTooltip="Reply" class="btn-rep" (click)="openReply(element.tkt_No)">
+        <i class="fa fa-reply" aria-hidden="true"></i>
+      </button>
+      <button matTooltip="Status" class="btn-rep" (click)="openDeveStatus()">
+        <i class="fa-solid fa-ticket"></i></button>
+
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-head"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+  <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr> -->
+
+
+</table>
+
+<mat-paginator [length]="10" showFirstLastButtons [pageSizeOptions]="[10,15,20,50,100]" aria-label="Tickets per page"
+  [pageSize]="5" paginator>
+</mat-paginator>
+
+
+
+

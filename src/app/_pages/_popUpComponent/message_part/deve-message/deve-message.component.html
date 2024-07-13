@@ -1,0 +1,29 @@
+<h2>Assigned Tickets for the developer</h2>
+<div class="container">
+    <!-- <h2>Responsive Table</h2> -->
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <thead >
+            <tr>
+                <th>Description</th>
+                <th>FormId</th>
+                <th>Status</th>
+                <th>TenantName</th>
+                <th>Problem</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let Msg of tktProblemList">
+            <tr >
+                <td>{{Msg.tkt_Desc}}</td>
+                <td>{{Msg.tkt_FormId}}</td>
+                <td>{{Msg.tkt_Status}}</td>
+                <td>{{Msg.tkt_TenantId}}</td>
+                <td>{{Msg.tkt_Problem}}</td>
+                
+            </tr>
+            
+           
+            <tbody>
+        </table>
+    </div>
+</div>

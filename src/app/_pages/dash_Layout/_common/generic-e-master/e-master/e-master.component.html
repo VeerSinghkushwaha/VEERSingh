@@ -1,0 +1,145 @@
+
+
+<div class="container1">
+
+  <div  class="emaster-box">
+    <h4>Head Form</h4>
+    <form [formGroup]="emasterForm" >
+      <div>
+        <label for="head_name">Head Name</label>
+        <span class="text-danger" *ngIf="(emasterForm.controls['head_name'].invalid && submittedForm) && (emasterForm.controls['head_name'].touched || emasterForm.controls['head_name'].dirty)">
+          <span style="color:red;" *ngIf="emasterForm.controls['head_name'].errors?.['required']">*Required</span>
+        </span>
+
+        <select required formControlName="head_name" class="os-assign" id="head_name">
+          <option value="formiddata" class="opt">Form id</option>
+          <option value="tenantdata" class="opt">Tenant id</option>
+          <option value="priority" class="opt">Priority</option>
+          <option value="status" class="opt">Status </option>
+          <option value="assign" class="opt">Assign</option>
+          <option value="category" class="opt">Category</option>
+      </select>
+
+      <label for="abbr.name">Abbr.Name</label>
+      <span class="text-danger" *ngIf="(emasterForm.controls['tkt_abbr_name'].invalid && submittedForm) && (emasterForm.controls['tkt_abbr_name'].touched || emasterForm.controls['tkt_abbr_name'].dirty)">
+        <span style="color:red;" *ngIf="emasterForm.controls['tkt_abbr_name'].errors?.['required']">*Required</span>
+      </span>
+
+      <input type="text"
+              placeholder="Enter your name"
+              formControlName="tkt_abbr_name"
+              name ="tkt_abbr_name"
+              id="abbr.name"
+               required>
+
+        <label for="formId">FormId</label>
+        <span class="text-danger" *ngIf="(emasterForm.controls['formId'].invalid && submittedForm) && (emasterForm.controls['formId'].touched || emasterForm.controls['formId'].dirty)">
+          <span style="color:red;" *ngIf="emasterForm.controls['formId'].errors?.['required']">*Required</span>
+        </span>
+
+       <input type="text" formControlName="formId" id="formId" name="formId" placeholder="Form Id">
+
+       <div style="display: flex;">
+
+        <button class="action-btn" (click)="add()">Add</button>
+         <button class="action-btn" (click)="ResetForm()">Reset</button>
+       </div>
+
+      </div>
+
+
+
+
+    </form>
+
+  </div>
+  <!-- searching box -->
+  <div class="search-box emaster-search">
+
+    <form  [formGroup]="searchForm" style="width:100%;">
+      <div style="display:flex;">
+
+      <div class="input-box" style="width:95%;">
+          <span class="details" style="display: block;">Select</span>
+          <select required formControlName="baseid"  class="os-assign" #baseid>
+              <option value="formiddata" class="opt">Form id</option>
+              <option value="tenantdata" class="opt">Client Name</option>
+              <option value="priority" class="opt">Priority</option>
+              <option value="status" class="opt">Status </option>
+              <option value="assign" class="opt">Assign</option>
+          </select>
+          <div class="text-danger" *ngIf="(searchForm.controls['baseid'].invalid && submittedForm) && (searchForm.controls['baseid'].touched || searchForm.controls['baseid'].dirty)">
+            <span style="color:red;" *ngIf="searchForm.controls['baseid'].errors?.['required']">*Required</span>
+           </div>
+      </div>
+
+      <div class="hdr-search input-box"  style="width:95%;">
+          <span class="details" style="display: block;">Search</span>
+          <input type="text" placeholder="search id" formControlName="searchText" #searchText>
+          <div class="text-danger" *ngIf="(searchForm.controls['searchText'].invalid && submittedForm) && (searchForm.controls['searchText'].touched || searchForm.controls['searchText'].dirty)">
+            <span style="color:red;" *ngIf="searchForm.controls['searchText'].errors?.['required']">*Required</span>
+           </div>
+
+      </div>
+      <div class="input" style="margin-top:2rem;">
+          <span class="details" style="display: block;"></span>
+          <button style="height:2rem;width:3.8rem;border-radius: 0.4rem;" (click)="filterValue(searchForm.value.baseid, searchText.value)">
+              <i class="fas fa-search"></i>
+          </button>
+      </div>
+
+    </div>
+  </form>
+  <!-- show data field -->
+  <div class="show-data-field">
+        <table class="blue"  *ngFor="let showdata of listdata">
+          <thead>
+            <tr>
+              <th>Head Field</th>
+              <th>Form name</th>
+              <th *ngIf="showdata.formId">Form id</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody  *ngFor="let showdata of listdata">
+            <tr>
+              <td>{{showdata.head_name}}</td>
+              <td>{{showdata.tkt_abbr_name}}</td>
+              <td *ngIf="showdata.formId">{{showdata.formId}}</td>
+
+              <td><button mat-button color="primary" (click)="updateGmaster(showdata.head_name,showdata.tkt_abbr_name)">Edit</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        </div>
+
+</div>
+
+</div>
+
+
+<!-- <div style="display:none">
+<mat-form-field>
+  <mat-label>Horizontal position</mat-label>
+  <mat-select [(value)]="horizontalPosition">
+    <mat-option value="start">Start</mat-option>
+    <mat-option value="center">Center</mat-option>
+    <mat-option value="end">End</mat-option>
+    <mat-option value="left">Left</mat-option>
+    <mat-option value="right">Right</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Vertical position</mat-label>
+  <mat-select [(value)]="verticalPosition">
+    <mat-option value="top">Top</mat-option>
+    <mat-option value="bottom">Bottom</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button  color="warn" mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar">
+  Pool party!
+</button>
+</div> -->

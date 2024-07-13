@@ -1,0 +1,145 @@
+.heading {
+  text-align: center;
+  color: white;
+  background-color: rgb(38, 119, 241);
+  height: 2rem;
+  font-size: 1rem;
+  width:100%;
+}
+.form-container {
+  width: 100%;
+  margin-top: 0.2rem;
+  display: flex;
+}
+.form-box {
+  width: 58%;
+ padding:0.3rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.description {
+  width: 100%;
+}
+.example-container {
+  justify-content: space-between;
+}
+
+.col {
+  display: flex;
+  gap: 5px;
+}
+mat-form-field {
+  width: 48%;
+  justify-content: space-between;
+}
+
+.action-box {
+  margin-top: 10px;
+  justify-content: flex-end;
+  display: flex;
+ margin-right: 0.5rem;
+}
+.action-box div {
+  margin: 0.1rem;
+}
+.input_fileupload--hidden {
+  display: none;
+}
+.filebtn {
+  width: 4rem;
+  overflow: hidden;
+}
+.file-box {
+  background-size: contain;
+  overflow: hidden;
+  height: auto;
+  width: 42%;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    padding:0.3rem;
+}
+
+/*  */
+
+.container {
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  margin:0px;
+}
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+.container .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container form .user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+form .user-details .input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+.user-details .input-box .details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-details .input-box input,
+.user-details .input-box select,
+.os-assign {
+  height: 45px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #636060;
+  padding-left: 15px;
+  font-size: 16px;
+
+}
+
+
+.file-box .input-box {
+  height: 47px;
+}
+.input-box select {
+  border: 0.5px solid black;
+}
+.img-box {
+  width: 100%;
+  border: 1px solid rgb(2, 2, 2);
+
+}
+.os-assign {
+  border: 0.5px solid black;
+}
+.action-box div button {
+  color: white;
+}
+
+.input-same-property:focus,
+.input-same-property:valid{
+  border:0.5px solid rgb(49, 47, 47);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+   rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.error{
+  border:2px solid red !important;
+  color: red !important;
+  background-color: red;
+}

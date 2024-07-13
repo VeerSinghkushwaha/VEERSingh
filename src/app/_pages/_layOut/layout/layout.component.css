@@ -1,0 +1,52 @@
+main{
+    width:100%;
+    position: absolute;
+    top:2rem;
+    z-index: 1;
+}
+.display-area{
+    position: absolute;
+    left:60px;
+    width:calc(100% - 60px);
+    transition:  ease 300ms;
+    z-index: 1;
+}
+app-header{
+
+    width:100%;
+    position: fixed;
+    height:2rem;
+    top:0px;
+    left: 60px;
+    z-index: 2;
+    transition:  ease 300ms;
+}
+app-side-navbar{
+    position: fixed;
+    left:0;
+    top:0;
+    width: 60px;
+    height:calc(100% - 3rem);
+    overflow-x: hidden;
+    white-space: nowrap;
+    z-index: 2;
+ transition:  ease 300ms;
+ height:100%;
+background-color: #030c5c;
+}
+.app-side-navbar-open{
+    width:250px;
+    transition: ease 300ms;
+}
+
+.side-navbar-shrink{
+    width:calc(100% - 250px);
+    left:250px;
+    transition: ease 300ms;
+}
+.header-shrink{
+    width:calc(100% - 250px);
+    left:250px;
+    transition:  ease 300ms;
+
+}

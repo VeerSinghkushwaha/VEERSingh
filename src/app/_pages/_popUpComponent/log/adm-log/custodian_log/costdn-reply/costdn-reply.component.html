@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row" style="text-align: center;"><h4>Reply{{Rplydata.tkt_FormId}}</h4></div>
+<form (formGroup)="tktRplyForm">
+    <label for="userName">User Name:</label><br>
+    <select id="userName" formControlName="userName"  name="userName">
+      <option *ngFor="let option of developList; let i = index;" value="{{option.roleName}}">{{option.roleName}}</option>
+     
+    </select>
+      <label for="replyDate">Reply Date:</label><br>
+      <input type="text" 
+      value=" {{Current_date_time  | date: 'MMM d, y, h:mm:ss a'}}"
+      id="replyDate" name="replyDate" formControlName="replyDate"><br>
+    
+      <label for="replyText">Reply Text:</label><br>
+      <textarea formControlName="messageContent"  id="replyText" name="replyText" rows="4" cols="50"></textarea><br>
+    
+      <label for="imageUpload">Upload Image:</label><br>
+      <input type="file" id="imageUpload" name="imageUpload"><br><br>
+    
+    
+    </form>
+
+    <div class="row" style="padding-left:6rem;">
+        <div class="col" >
+            <button mat-raised-button [mat-dialog-close]="false"
+             (click)="closePopup()" color="warn">Close</button>
+        </div>
+        <div class="col">
+            <button mat-raised-button color="primary"
+            (click)="sendMessage()" close="true">Send</button>
+        </div>
+       
+    </div>
+</div>

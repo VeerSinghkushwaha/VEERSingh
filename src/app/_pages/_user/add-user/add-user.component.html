@@ -1,0 +1,213 @@
+<!--
+<div class="contianer-fluid" style="margin-top:3%;margin-left:2%;text-align: center;">
+
+  <body>
+
+    <form id="user" [formGroup]="userDataForm">
+      <h3>User Data</h3>
+      <hr>
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input type="text" id="name" name="name" formControlName="roleName" required></td>
+        </tr>
+        <tr>
+          <td><label for="loginId">Login ID:</label></td>
+          <td><input type="text" id="loginId" name="loginId" formControlName="loginId" required></td>
+        </tr>
+        <tr>
+          <td><label for="password">Password:</label></td>
+          <td><input type="password" id="password" name="password" formControlName="password" required>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="tenant">Tenant:</label></td>
+          <td>
+            <select id="tenant" name="tenantId" formControlName="tenantId" required>
+              <option *ngFor="let tenant of  tenant_data" value="{{tenant.tkt_abbr_name}}">{{tenant.tkt_abbr_name}}
+              </option>
+
+            </select>
+
+        </tr>
+        <tr>
+          <td><label for="role">Role:</label></td>
+          <td>
+            <select id="role" formControlName="role" name="roleName" required>
+              <option value="admin">Admin</option>
+              <option value="Custodian">Custodian</option>
+              <option value="Developer">Developer</option>
+              <option value="Customer">Customer</option>
+
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="isActive">Is Active:</label></td>
+          <td><input type="checkbox" id="isActive" name="isActive" formControlName="isActive" checked></td>
+        </tr>
+      </table>
+
+      <button class="save" type="button submit" (click)="save()">Save</button>
+      <button class=reset type="button" (click)="reset()">Reset</button>
+
+
+    </form>
+  </body>
+
+
+</div> -->
+
+
+
+<div class="container1">
+
+  <div class="container2">
+
+    <div style="text-align: center;padding:0.8rem;">
+      <h3>User Generic Form</h3>
+    </div>
+
+    <form [formGroup]="userDataForm">
+
+      <div>
+        <label for="fname"> Name</label>
+        <span *ngIf="(userDataForm.controls['roleName'].invalid)
+    && (userDataForm.controls['roleName'].touched
+    || userDataForm.controls['roleName'].dirty)">
+          <span class="validation-color" *ngIf="userDataForm.controls['roleName'].errors?.['required']">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+        </span>
+        <input type="text" id="name" name="name" formControlName="roleName" required>
+
+        <label for="lname">LoginId</label>
+        <span *ngIf="(userDataForm.controls['loginId'].invalid)
+    && (userDataForm.controls['loginId'].touched
+    || userDataForm.controls['loginId'].dirty)">
+          <span class="validation-color" *ngIf="userDataForm.controls['loginId'].errors?.['required']">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+        </span>
+        <input type="text" id="loginId" name="loginId" formControlName="loginId" required>
+
+
+        <label for="tenant">Client</label>
+        <span *ngIf="(userDataForm.controls['tenantId'].invalid)
+    && (userDataForm.controls['tenantId'].touched
+    || userDataForm.controls['tenantId'].dirty)">
+          <span class="validation-color" *ngIf="userDataForm.controls['tenantId'].errors?.['required']">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+        </span>
+        <select id="tenant" name="tenantId" formControlName="tenantId" required>
+          <option *ngFor="let tenant of  tenant_data" value="{{tenant.tkt_abbr_name}}">{{tenant.tkt_abbr_name}}</option>
+          <!-- Add more roles as needed -->?
+        </select>
+      </div>
+
+      <div>
+        <label for="role">Role</label>
+        <span *ngIf="(userDataForm.controls['role'].invalid)
+    && (userDataForm.controls['role'].touched
+    || userDataForm.controls['role'].dirty)">
+          <span class="validation-color" *ngIf="userDataForm.controls['role'].errors?.['required']">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+        </span>
+        <select id="role" formControlName="role" name="role" required>
+          <option value="Admin">Admin</option>
+          <option value="Custodian">Custodian</option>
+          <option value="Developer">Developer</option>
+          <option value="Customer">Customer</option>
+        </select>
+
+        <label for="password">Password</label>
+        <span *ngIf="(userDataForm.controls['password'].invalid)
+    && (userDataForm.controls['password'].touched
+    || userDataForm.controls['password'].dirty)">
+          <span class="validation-color" *ngIf="userDataForm.controls['password'].errors?.['required']">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+        </span>
+        <input type="password" id="password" name="password" formControlName="password" required>
+
+        <label for="isActive">isActive</label>
+        <span *ngIf="(userDataForm.controls['isActive'].invalid)
+    && (userDataForm.controls['isActive'].touched
+    || userDataForm.controls['isActive'].dirty)">
+          <span class="validation-color" *ngIf="userDataForm.controls['isActive'].errors?.['required']">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+        </span>
+        <input type="checkbox" id="isActive" name="isActive" formControlName="isActive" checked
+          style="height:2.5rem;margin-top:1rem; border: 1px solid black;">
+
+        <button class="submit-btn" type="submit" (click)="save()" style="background-color: blue;">Submit</button>
+        <button type="button" class="submit-btn" (click)="reset()"
+          style="background-color: rgb(238, 39, 39);">Reset</button>
+      </div>
+
+    </form>
+  </div>
+  <!-- searching box -->
+  <div class="search-box">
+    <div style="text-align: center;">
+      <h5>User Generic Search</h5>
+    </div>
+    <form  [formGroup]="searchForm">
+
+    <!-- <label for="role">Role</label> -->
+    <span *ngIf="(searchForm.controls['role'].invalid)
+    && (searchForm.controls['role'].touched
+    || searchForm.controls['role'].dirty)">
+          <span class="validation-color" *ngIf="searchForm.controls['role'].errors?.['required']">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+        </span>
+    <select id="role" formControlName="role" name="role" required>
+      <option value="Admin">Admin</option>
+      <option value="Custodian">Custodian</option>
+      <option value="Developer">Developer</option>
+      <option value="Customer">Customer</option>
+    </select>
+    <!-- <label for="fname">Name</label> -->
+    <input type="text" id="fname" formControlName="userName"name="firstname" placeholder="Write">
+
+    <button class="search-logo" (click)="searchBox()">
+                 <i class="fas fa-search"></i>
+                </button>
+  </form>
+
+
+  <!-- show data field -->
+  <h6>Show data</h6>
+  <div class="show-data-field">
+    <table class="blue"  *ngFor="let showdata of Listdata">
+      <thead>
+        <tr>
+          <th>Head Field</th>
+          <th>Password</th>
+          <th *ngIf="showdata.roleName">Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr>
+          <td>{{showdata.tenantId}}</td>
+          <td>{{showdata.password}}</td>
+          <td *ngIf="showdata.roleName">{{showdata.roleName}}</td>
+
+          <td><button mat-button color="primary" (click)="updateUser(showdata)">Edit</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+
+</div>
+
+

@@ -1,0 +1,22 @@
+.container1{
+    width:100%;
+}
+.header{
+    Width:1.5rem;
+    background-color: blue;
+}
+.header p{
+    color:white;
+    font-size: 15px;
+}
+.body-content{
+    width:100%;
+    margin:10 5 0 0;
+}
+.img-box,#img-box{
+    Width:4rem;
+    height:4rem;
+    margin-top:1rem;
+    border-radius: 50%;
+    background-color: aquamarine;
+}

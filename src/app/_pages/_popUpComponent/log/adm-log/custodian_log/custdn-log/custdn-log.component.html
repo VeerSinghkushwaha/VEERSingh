@@ -1,0 +1,84 @@
+
+
+
+<div class="container" style="text-align: center;height:2rem;color:white;background-color: rgb(38, 119, 241);">
+
+  <p><span style="font-weight: bold; margin-right:1rem;">Ticket Log</span>Form id::{{data.tkt_FormId}}</p>
+</div>
+
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
+
+   <!--- Note that these columns can be defined in any order.
+         The actual rendered columns are set as a property on the row definition" -->
+
+   <!-- Position Column -->
+   <!-- <ng-container matColumnDef="tkt_FormId">
+     <th mat-header-cell *matHeaderCellDef>Form id</th>
+     <td mat-cell *matCellDef="let element"> {{element.tkt_FormId}} </td>
+   </ng-container>
+  -->
+   <!-- Name Column -->
+   <!-- <ng-container matColumnDef="tkt_message">
+     <th mat-header-cell *matHeaderCellDef> Message </th>
+     <td mat-cell *matCellDef="let element"> {{element.tkt_message}} </td>
+   </ng-container> -->
+
+   <!-- Weight Column -->
+   <!-- <ng-container matColumnDef="tkt_Date">
+     <th mat-header-cell *matHeaderCellDef> Sender Date </th>
+     <td mat-cell *matCellDef="let element"> {{element.tkt_Date}} </td>
+   </ng-container> -->
+
+   <!-- Symbol Column -->
+   <!-- <ng-container matColumnDef="tkt_Resp">
+     <th mat-header-cell *matHeaderCellDef>Revolved </th>
+     <td mat-cell *matCellDef="let element"> {{element.tkt_Resp}} </td>
+   </ng-container> -->
+    <!-- Symbol Column -->
+    <!-- <ng-container matColumnDef="send_deve_name">
+      <th mat-header-cell *matHeaderCellDef>Sender</th>
+      <td mat-cell *matCellDef="let element"> {{element.send_deve_name}} </td>
+    </ng-container>
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ </table>
+
+ <mat-paginator #paginator
+               class="demo-paginator"
+
+               [length]="10"
+
+
+               aria-label="Select page">
+</mat-paginator> -->
+
+
+<table class="styled-table" >
+  <thead>
+      <tr>
+          <th>DeveloperName</th>
+          <th>Comments</th>
+          <th>Duration</th>
+      </tr>
+  </thead>
+  <tbody *ngFor="let msg of messageList">
+      <tr>
+          <td>{{msg.send_deve_name}}</td>
+          <td>{{msg.tkt_message}}</td>
+          <td>
+
+
+              {{ duration }}
+
+
+        </td>
+      </tr>
+      <!-- <tr class="active-row">
+          <td>Melissa</td>
+          <td></td>
+      </tr> -->
+      <!-- and so on... -->
+  </tbody>
+</table>
+
+

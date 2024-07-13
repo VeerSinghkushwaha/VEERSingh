@@ -1,0 +1,100 @@
+
+<div class="title" style="text-align:center;height:2rem;background-color: rgb(38, 119, 241);color:white;">
+    <h5>Remarks</h5></div>
+
+    <div class="container">
+
+        <form [formGroup] = "messageForm">
+            <div class="user-details">
+                   <div class="input-box">
+                    <span class="details">Form Id</span>
+                    <input type="text" [value]="formid.id" readonly>
+                     </div>
+
+                   <div class="input-box">
+                    <span class="details">Date</span>
+                    <input type="text"
+                    [value]="formattedDateTime"
+                    formControlName="tkt_Date" id="dateInput"
+                    readonly/>
+                </div>
+                  <!-- developer name -->
+                  <div class="input-box">
+                    <span class="details">Developer Name</span>
+                    <input type="text"
+                    [value]="developername"
+                    formControlName="send_deve_name" id="dateInput"
+                    name=" send_deve_name"
+                    readonly/>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Status</span>
+                    <select id="statuses" formControlName="tkt_Resp">
+                        <option value="Resolved">Resolved</option>
+                        <option value="UnResolved">UnResolved</option>
+                    </select>
+                </div>
+                <!-- discription box -->
+                <div class="input-box" style="width:99.95%;margin-left:0.3rem;">
+                    <span class="details">Description</span>
+                    <textarea id="replyText" name="replyText"
+                    placeholder="write about the tickets"  rows="3" cols="60"
+                     formControlName="tkt_message"></textarea><br>
+                </div>
+
+                </div>
+                <!-- <button  class="btn btn-primary"type="button" onclick="save()">Save</button> -->
+                <div class="buttom" style="text-align: end;">
+
+                <button type="submit" (click)="sendMsg()" style="background-color:  #3cb371;width:7rem;"  mat-raised-button color="primary">Submit</button>
+                <button  type="button" onclick="reset()" style="width:7rem;" mat-raised-button color="warn">Reset</button>
+                <button mat-raised-button color="warn" (click)="closePopup()"
+                style="background-color:  #1da1f2;width:7rem;">Close</button>
+
+                </div>
+        </form>
+    </div>
+
+
+<!-- <p>deve-remark works!</p>
+<div class="container">
+    <form [formGroup] = "messageForm">
+        <div class="row">
+            <div class="col">
+                <input type="text" formControlName="tkt_FormId">
+            </div>
+            <div class="col">
+                <textarea formControlName="tkt_message"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+               <input type="datetime-local" placeholder="Enter your Date"
+                    [value]="messageForm.get('tkt_Date')?.value | date: 'short'"
+                    formControlName="tkt_Date"
+                    required>
+            </div>
+            <div class="col">
+               <select>
+                <option value="i">Resolved</option>
+                <option value="1">UnResolved</option>
+               </select>
+            </div>
+            <div class="row">
+                <button type="submit" (click)="sendMsg()">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<button mat-raised-button color="warn" (click)="closePopup()">Close</button>
+
+ -->
+
+
+
+
+
+

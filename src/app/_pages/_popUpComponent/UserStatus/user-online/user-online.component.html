@@ -1,0 +1,42 @@
+<div class="container1">
+  <div class="header">
+    <p >UserActive</p>
+  </div>
+  <div class="main-body">
+
+    <table class="styled-table">
+      <thead>
+          <tr>
+              <th>Role</th>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Online</th>
+
+          </tr>
+      </thead>
+      <tbody >
+          <tr *ngFor="let user of userStatus">
+              <td>{{user.role}}</td>
+              <td>{{user.date| date:'hh:mm:ss a'}}</td>
+              <td>{{user.roleName}}</td>
+
+              <td class="blink-box"> <!-- blink option -->
+                <div class="text blink-text">
+
+                </div>
+              </td>
+          </tr>
+
+          <!-- and so on... -->
+      </tbody>
+  </table>
+
+
+
+
+
+
+
+
+  </div>
+</div>

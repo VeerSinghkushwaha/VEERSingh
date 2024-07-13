@@ -1,0 +1,28 @@
+
+<div class="container-fluid g-0">
+
+    <app-header
+     (SidNavbarToggled)="SidNavbarStatus = $event"
+     [ngClass]="{'header-shrink': SidNavbarStatus}"
+     (logOutfun)="logOut()"
+
+     >
+    </app-header>
+    <main>
+        <app-side-navbar class="black-border" (SidNavbarStatus)="SidNavbarStatus"
+        [ngClass]="{'app-side-navbar-open': SidNavbarStatus}">
+
+        </app-side-navbar>
+
+
+  <!--This  section is provided the dynamic components-->
+    <section class="display-area" [ngClass]="{'side-navbar-shrink': SidNavbarStatus}">
+
+        <router-outlet></router-outlet>
+
+    </section>
+
+
+</main>
+</div>
+

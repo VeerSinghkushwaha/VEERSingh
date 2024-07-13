@@ -1,0 +1,32 @@
+<div class="head-word">
+  <h4>Status</h4>
+</div>
+<div class="status-container">
+
+  <ul class="status-list">
+    <li *ngFor="let step of steps; let i = index"
+        [class.active]="step.status === 'active'"
+        [class.pending]="step.status === 'pending'"
+       >
+       <!--  [style.background-color]="step.color" -->
+        <div class="cir-arrow">
+
+          <div class="circle">
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </div>
+
+          <div class="arrow">
+            <i class="fa-solid fa-arrow-down"></i>
+          </div>
+
+        </div>
+
+       <div style="margin-bottom:1.3rem;">
+        <span class="status-name">{{ step.name }}</span>
+       </div>
+
+    </li>
+    <p>Passed</p>
+
+  </ul>
+</div>

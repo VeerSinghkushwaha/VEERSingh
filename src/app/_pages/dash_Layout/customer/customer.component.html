@@ -1,0 +1,173 @@
+
+<div class="custmr-container" style="margin-top:1.5rem;">
+
+    <div class="example-button-row">
+      <div class="btn1">
+        <button class="btn-c"  mat-raised-button style="background-color: #04aa6d">Primary</button>
+      </div>
+      <div class="btn1">
+        <button class="btn-c" mat-raised-button style="background-color: #55c2da">Accent</button>
+      </div>
+      <div class="btn1">
+        <button class="btn-c" mat-raised-button color="warn">Warn</button>
+      </div>
+      <div class="btn1">
+        <button class="btn-c" style="background-color: rgb(54, 110, 161)" mat-raised-button disabled>Disabled</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- customer styling data and handle it -->
+  <div class="customr-dash">
+  
+    <div class="col1">
+      <button mat-raised-button (click)="openCustom()" color="primary">
+        Write the Problems
+       </button>
+    </div>
+  
+    <div class="col1" style="width:24.8%">
+      <form>
+       
+        <input (keyup)="applyFilter($event)" placeholder="Filter" #input id="search-filter">
+      </form>
+    </div>
+  
+  </div>
+  
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" matSort>
+    <!-- ticket number Column -->
+    <ng-container matColumnDef="tktNo">
+      <th mat-header-cell *matHeaderCellDef class="tablehead">Ticket No.</th>
+      <td mat-cell *matCellDef="let element">{{element.tktNo}}</td>
+    </ng-container>
+  
+    <!-- ticket Date Column -->
+    <ng-container matColumnDef="tktDate">
+      <th mat-header-cell *matHeaderCellDef class="tablehead">Ticket Date
+        <div>
+            <form>
+        <input  class="form-field" [formControl]=" nameFilter" >
+      </form>
+            </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.tktDate}}</td>
+    </ng-container>
+  
+    <!-- Problem Column -->
+    <ng-container matColumnDef="problem">
+      <th mat-header-cell *matHeaderCellDef class="tablehead">Problem
+  
+        <div>
+          <form>
+      <input  class="form-field" [formControl]=" nameFilter" >
+    </form>
+          </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.problem}}</td>
+    </ng-container>
+  
+    <!-- formId Column -->
+    <ng-container matColumnDef="formId">
+      <th mat-header-cell *matHeaderCellDef class="tablehead">Form Id
+        <div>
+            <form>
+        <input  class="form-field" [formControl] = "nameFilter" >
+      </form>
+            </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.formId}}</td>
+    </ng-container>
+  
+  
+  
+    <!--description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="tablehead">Description
+        <div>
+            <form>
+        <input  class="form-field" [formControl]=" nameFilter" >
+      </form>
+            </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.description}}</td>
+    </ng-container>
+  
+    <!--Query Column -->
+    <ng-container matColumnDef="quary">
+      <th mat-header-cell *matHeaderCellDef class="tablehead">Query
+        <div>
+            <form>
+        <input  class="form-field" [formControl]=" nameFilter" >
+      </form>
+            </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.quary}}</td>
+    </ng-container>
+    <!--Resolution Column -->
+    <ng-container matColumnDef="resolution">
+      <th mat-header-cell *matHeaderCellDef class="tablehead">Resolution
+
+        <div>
+          <form>
+      <input  class="form-field" [formControl]=" nameFilter" >
+    </form>
+          </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.resolution}}</td>
+    </ng-container>
+  
+    <!-- status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status
+
+        <div>
+          <form>
+      <input  class="form-field" [formControl]=" nameFilter" >
+    </form>
+          </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.status}}</td>
+    </ng-container>
+  
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+
+      <th mat-header-cell *matHeaderCellDef class="tablehead">Action</th>
+      <td mat-cell *matCellDef="let element">{{element.action}}
+      <!--   <button mat-raised-button color="primary" (click)="openCustomerLog()">Log</button>-->
+      <p>
+        <span class="custmr-status">  
+          <button (click)="openCustomerStatus(element.tktNo)">Status</button>
+        </span>
+        <span class="custmr-reply"> 
+          <button  (click)="openCustomerReply(element.tktNo)">Reply</button>
+        </span>       
+      </p>
+       
+        
+       
+    </td>
+    </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-head"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+    <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr> -->
+  
+  
+   </table>
+  
+  <mat-paginator [length]="10"
+    showFirstLastButtons
+  
+      [pageSizeOptions]="[5, 15,20,50,100]"
+      aria-label="Tickets per page"
+       [pageSize]="5" paginator>
+  </mat-paginator>
+  <h2>this worked</h2>
+  <div *ngFor="let message of messages">
+    <p>{{ message }}</p>
+  </div>
+  

@@ -1,0 +1,84 @@
+/* spot blick animation */
+
+
+.container1{
+  width:100%;
+  height:100%;
+}
+.header{
+  width:100%;
+  height:2rem;
+  text-align: center;
+  background-color: rgb(35, 35, 228);
+}
+.header p{
+  color:white;
+}
+
+.blink-text{
+
+   animation: blink-animation 1s infinite;
+}
+@keyframes blink-animation{
+  0%{
+opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+
+}
+.text{
+  width:0.9rem;
+  height:0.9rem;
+  margin-left:45%;
+  border-radius: 50%;
+  background-color: rgb(5, 255, 17);
+  /* background: linear-gradient(rgb(19, 19, 211),rgb(69, 55, 223),rgb(108, 203, 108));
+ */
+}
+
+.main-body{
+  background-color: #210F55;
+  padding:1rem;
+ 
+}
+.styled-table {
+  width:100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: center;
+  height:2.5rem;
+}
+.styled-table tbody tr{
+  text-align: center;
+
+}
+.styled-table tbody tr td{
+  color:#ffffff;
+  text-align: center;
+  height:1.9rem;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.blink-box{
+padding-left:1rem;
+
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

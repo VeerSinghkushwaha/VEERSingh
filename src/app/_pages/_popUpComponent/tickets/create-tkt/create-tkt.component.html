@@ -1,0 +1,380 @@
+
+
+<div class="heading" >
+  {{ inputData.title }}
+  <span
+    *ngIf="data.tkt_FormId !== null && data.tkt_FormId > 0"
+    style="margin-left: 5px"
+    >FormId:{{ data.tkt_FormId }}</span
+  >
+</div>
+
+<div class="container" style="background-color:#f2f2f2;">
+  <form [formGroup]="ticketForm" style="width:100%;">
+    <div class="form-container">
+      <!--form input form container-->
+
+      <!--contents of forms-->
+      <div mat-dialog-conetent class="form-box">
+
+        <!-- <div class="container"> -->
+
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Ticket No</span>
+            <input
+            [tabindex]="1"
+            class="input-same-property"
+            *ngIf="
+              data.tkt_FormId !== null &&
+              data.tkt_FormId !== undefined &&
+              data.tkt_FormId > 0
+            "
+            type="text"
+            formControlName="tkt_No"
+            name="tkt_No"
+            readonly
+          />
+            <input
+            class="input-same-property"
+              type="text"
+              *ngIf="inputData.title"
+              [(ngModel)]="serialNumber"
+              formControlName="tkt_No"
+              name="tkt_No"
+              [tabindex]="1"
+              readonly
+            />
+            <!-- <select name="tkt_No"  formControlName="tkt_No">
+              <option value="serialNumber">{{serialNumber}}</option>
+            </select> -->
+          </div>
+          <div class="input-box" style="position: relative;">
+            <span class="details">Form Id
+            <span class="text-danger" *ngIf="ticketForm.get('tkt_FormId')?.invalid && (ticketForm.get('tkt_FormId')?.touched || ticketForm.get('tkt_FormId')?.dirty)">
+              <span *ngIf="ticketForm.get('tkt_FormId')?.hasError('required')">* Required</span>
+            </span>
+          </span>
+            <select
+  required
+  class="input-same-property"
+  [tabindex]="5"
+  formControlName="tkt_FormId"
+  style="border: 1px solid #ccc;"
+>
+  <option *ngFor="let formid of formidFilterOption" [value]="formid.formId">
+    {{ formid.formId}} <span style="margin-left:1rem">{{ formid.tkt_abbr_name }}</span>
+  </option>
+</select>
+
+          </div>
+          
+          <div class="input-box">
+            <span class="details">Client Name
+              <span class="text-danger" *ngIf="ticketForm.get('tkt_TenantId')?.invalid && (ticketForm.get('tkt_TenantId')?.touched || ticketForm.get('tkt_TenantId')?.dirty)">
+                <span *ngIf="ticketForm.get('tkt_TenantId')?.hasError('required')">* Required</span>
+              </span>
+
+            </span>
+            <select
+            [tabindex]="2"
+              style=" border: 1px solid #ccc;"
+              formControlName="tkt_TenantId"
+              class="input-same-property"
+              required>
+              <option
+                *ngFor="let TenantId of tenantFilterOption"
+                value="{{ TenantId.tkt_abbr_name }}"
+              >
+                {{ [TenantId.tkt_abbr_name] | slice:0:30}}
+              </option>
+            </select>
+           
+          </div>
+
+          <div class="input-box">
+            <span class="details">Status
+              <span class="text-danger" *ngIf="ticketForm.get('tkt_Status')?.invalid && (ticketForm.get('tkt_Status')?.touched || ticketForm.get('tkt_Status')?.dirty)">
+                <span *ngIf="ticketForm.get('tkt_Status')?.hasError('required')">* Required</span>
+              </span>
+            </span>
+            <select
+            [tabindex]="6"
+              formControlName="tkt_Status"
+              style=" border: 1px solid #ccc;"
+              class="input-same-property"
+              required
+            >
+              <option *ngFor="let option of statusOptions" value="{{ option.tkt_abbr_name }}">
+                {{ option.tkt_abbr_name }}
+              </option>
+            </select>
+          
+          </div>
+
+          <div class="input-box">
+            <span class="details">Problem
+              <span class="text-danger" *ngIf="ticketForm.get('tkt_Problem')?.invalid && (ticketForm.get('tkt_Problem')?.touched || ticketForm.get('tkt_Problem')?.dirty)">
+                <span *ngIf="ticketForm.get('tkt_Problem')?.hasError('required')">* Required</span>
+              </span>
+            </span>
+            <select
+            [tabindex]="3"
+              formControlName="tkt_Problem"
+              style=" border: 1px solid #ccc;"
+              class="input-same-property"
+              required
+            >
+              <option
+                *ngFor="let category of Categories"
+                value="{{ category.tkt_abbr_name }}"
+              >
+                {{ category.tkt_abbr_name }}
+              </option>
+            </select>
+            
+          </div>
+
+          <div class="input-box">
+            <span class="details">Date
+              <span class="text-danger" *ngIf="ticketForm.controls['tkt_Date'].invalid && (ticketForm.controls['tkt_Date'].touched || ticketForm.controls['tkt_Date'].dirty)">
+                <span *ngIf="ticketForm.controls['tkt_Date'].errors?.['required']">
+                *required</span>
+                </span>
+            </span>
+            <input
+            [tabindex]="7"
+            class="input-same-property"
+              *ngIf="
+                data.tkt_FormId !== null &&
+                data.tkt_FormId !== undefined &&
+                data.tkt_FormId > 0
+              "
+              type="text"
+              formControlName="tkt_Date"
+              required
+            />
+            <input
+            required
+            [tabindex]="7"
+            class="input-same-property"
+              type="date"
+              placeholder="Enter your Date"
+              *ngIf="inputData.title"
+             value="updateDate()"
+              formControlName="tkt_Date"
+            />
+        
+
+          </div>
+
+          <div class="input-box">
+            <span class="details">Priority
+              <span class="text-danger" *ngIf="ticketForm.get('tkt_Priority')?.invalid && (ticketForm.get('tkt_Priority')?.touched || ticketForm.get('tkt_Priority')?.dirty)">
+                <span *ngIf="ticketForm.get('tkt_Priority')?.hasError('required')">* Required</span>
+              </span>
+            </span>
+            <select
+            required
+              [tabindex]="4"
+              formControlName="tkt_Priority"
+              style=" border: 1px solid #ccc;"
+              class="input-same-property"
+            >
+              <option
+                *ngFor="let priority of Priorities"
+                value="{{priority.tkt_abbr_name}}"
+              >
+                {{ priority.tkt_abbr_name }}
+              </option>
+            </select>
+          
+          </div>
+
+          <div class="input-box">
+            <span class="details">Ticket 
+              <span class="text-danger" *ngIf="ticketForm.controls['tkt_ReleaseId'].invalid && (ticketForm.controls['tkt_ReleaseId'].touched || ticketForm.controls['tkt_ReleaseId'].dirty)">
+                <span *ngIf="ticketForm.controls['tkt_ReleaseId'].errors?.['required']">
+                *required</span>
+                </span>
+            </span>
+            <input
+            class="input-same-property os-assign"
+             [tabindex]="8"
+              type="text"
+              style=" border: 1px solid #ccc;"
+              formControlName="tkt_ReleaseId"
+              name="tkt_Releaseid"
+              placeholder="Enter your Ticket Release"
+              required
+            />
+          
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--uploading container right side parts-->
+
+      <div class="file-box user-details" style="margin-left:0.5rem;">
+        <!-- operating system -->
+        <div class="input-box">
+          <span class="details">Product
+            <span class="text-danger" *ngIf="ticketForm.get('OS')?.invalid && (ticketForm.get('OS')?.touched || ticketForm.get('OS')?.dirty)">
+              <span *ngIf="ticketForm.get('OS')?.hasError('required')">* Required</span>
+            </span>
+          </span>
+          <select formControlName="OS"
+          required
+          tabindex="10"
+           class="os-assign input-same-property" style =" border: 1px solid #ccc;">
+
+            <option
+              *ngFor="let product of ProductList"
+              value="{{ product }}"
+            >
+              {{ product }}
+            </option>
+          </select>
+       
+        </div>
+
+        <!-- // Assigned tickets -->
+        <div class="input-box">
+          <span class="details">Assignee
+            <span class="text-danger" *ngIf="ticketForm.get('tkt_Assign')?.invalid && (ticketForm.get('tkt_Assign')?.touched || ticketForm.get('tkt_Assign')?.dirty)">
+              <span *ngIf="ticketForm.get('tkt_Assign')?.hasError('required')">* Required</span>
+            </span>
+          </span>
+          <select
+          required
+          tabindex="11"
+          formControlName="tkt_Assign" class="os-assign input-same-property"
+          style=" border: 1px solid #ccc;">
+            <option
+              *ngFor="let developer of DeveloperList"
+              value="{{ developer.tkt_abbr_name }}"
+            >
+              {{ developer.tkt_abbr_name  }}
+            </option>
+          </select>
+        
+        </div>
+
+
+        <div class="input-box" style=" width:100%;">
+          <span class="details">Resolution Id
+            <span class="text-danger" *ngIf="ticketForm.controls['tkt_ResolutionId'].invalid && (ticketForm.controls['tkt_ResolutionId'].touched || ticketForm.controls['tkt_ResolutionId'].dirty)">
+              <span *ngIf="ticketForm.controls['tkt_ResolutionId'].errors?.['required']">
+              *required</span>
+              </span>
+          </span>
+          <input
+        required
+          tabindex="12"
+          class="input-same-property"
+          style=" border: 1px solid #ccc;"
+            type="text"
+            placeholder="Enter your Resolution Id"
+            formControlName="tkt_ResolutionId"
+          />
+        
+        </div>
+
+        <div tabindex="13" class="input-box img-box" style="width:100%;height:8rem;">
+          <span class="details">Ticket Images</span>
+          <img *ngFor="let url of urls"
+            [src]="url" alt="Ticket"
+            style="width: 50%; height:3rem;background-size: contain;"
+          />
+          <img src="url">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="discription-container">
+
+      <span class="details">Description
+        <span class="text-danger" *ngIf="ticketForm.controls['tkt_Desc'].invalid && (ticketForm.controls['tkt_Desc'].touched || ticketForm.controls['tkt_Desc'].dirty)">
+          <span *ngIf="ticketForm.controls['tkt_Desc'].errors?.['required']">
+          *required</span>
+          </span>
+      </span>
+      <textarea
+     required
+      tabindex="14"
+        id="replyText"
+        name="description"
+        rows="5"
+        cols="90"
+        formControlName="tkt_Desc"
+        placeholder="write about the tickets"
+        style="width: 100%; border: 1px solid #ccc;"
+      ></textarea>
+
+    
+      <br/>
+
+    </div>
+  </form>
+
+</div>
+
+<!--Action box-->
+<div mat-dialog-action class="action-box">
+  <div class="attachFile" [formGroup]="ticketFile">
+    <input
+    [tabIndex]="15"
+      type="file"
+      (change)="onFileSelected($event)"
+      formControlName="imgfile"
+    />
+    <!-- <button mat-raised-button color="primary" (click)="UploadImage($event)">Upload</button> -->
+  </div>
+
+
+  <div class="logsFils" *ngIf="!inputData.title">
+    <button
+      mat-raised-button
+      mat-dialog-close
+      style="background-color: rgb(54, 110, 161);width:7rem;"
+      (click)="openticktlog($event)"
+    >
+     Log
+    </button>
+  </div>
+  <div class="insert-btn">
+    <button mat-raised-button [tabIndex]="16" (click)="submitTickets()" style="background-color:  #3cb371;width:7rem;">
+      <!-- <span *ngIf="data.tkt_FormId !== null && data.tkt_FormId !== undefined">Update</span> -->
+
+      {{ inputData.title }}
+      <span
+        *ngIf="
+          data.tkt_FormId !== null &&
+          data.tkt_FormId !== undefined &&
+          data.tkt_FormId > 0"
+        >Update</span
+      >
+    </button>
+  </div>
+  <div class="reset-btn">
+    <button mat-raised-button color="warn" style="width:7rem;" (click)="ResetForm()">Reset</button>
+  </div>
+
+  <div class="cancel-btn">
+    <button style="background-color: #1da1f2;width:7rem;"
+      mat-raised-button
+      [mat-dialog-close]="false"
+      (click)="closePopup()"
+
+    >
+      Close
+    </button>
+  </div>
+
+</div>
+
+

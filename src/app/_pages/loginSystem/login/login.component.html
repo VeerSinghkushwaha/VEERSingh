@@ -1,0 +1,66 @@
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <!--for login form-->
+  <form  [formGroup] ="loginForm" name="form">
+    <h3>Login Here</h3>
+  
+    <!-- <label for="role">Role</label>
+    <input
+      type="text"
+      name="roleType"
+      placeholder="Role"
+      id="role"
+     formControlName="roleType"
+    /> -->
+  
+  
+    <mat-label for="roleType">Role</mat-label>
+    <mat-select id="roleType" formControlName="role">
+      <mat-option value="Admin">Admin</mat-option>
+      <mat-option value="Custodian">Custodian</mat-option>
+      <mat-option value="Developer">Developer</mat-option>
+      <mat-option value="Customer">Customer</mat-option>
+  
+    </mat-select>
+  
+    <!-- <label for="roleType">Role</label>
+    <select id="roleType" formControlName="roleType">
+      <option value="Admin">Admin</option>
+      <option value="Custodian">Custodian</option>
+      <option value="Developer">Developer</option>
+      <option value="Customer">Customer</option>
+    </select> -->
+  
+    <label for="username">Username</label>
+    <input
+      type="text"
+      name="roleName"
+      placeholder="User Name"
+      id="roleName"
+     formControlName="roleName"
+  
+    />
+  
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+  
+      placeholder="Password"
+      id="password"
+      formControlName="password"
+    />
+  
+    <button style="color: black"(click)="login()" >LogIn</button>
+    <div class="social">
+  
+    </div>
+  </form>
+  <div class="alert alert-success" *ngIf="!isLoggedIn">
+    Logged in as {{ roles }}.
+  </div>
+  <!--for Registration form-->
+  
+  
